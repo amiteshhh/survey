@@ -5,6 +5,123 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+  <h2>Welcome to Ionic!</h2>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button mini
+                      (click)="addQuestion()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  <div>
+    <div>
+      <ion-item>
+        <ion-input required
+                   type="text"
+                   placeholder="Form title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text"
+                   placeholder="Form description"></ion-input>
+      </ion-item>
+    </div>
+    <div>
+     
+      <ion-card *ngFor="let question of questions"
+                (click)="activeQuestion=question">
+        <!-- <div > -->
+          <!--Configuration mode-->
+          <!-- <ion-item *ngIf="activeQuestion === question" style="position: absolute;width:200px;right:0"> -->
+          <ion-item style="position: absolute;width:200px;right:0">
+            <ion-select interface="popover" style="max-width:100%;width:100%"
+                        placeholder="Question Type">
+              <ion-select-option *ngFor="let choice of questionTypes"
+                                 value="{{choice.code}}">
+                <ion-icon name="add"></ion-icon>{{choice.description}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        <!-- </div> -->
+        <!-- <ion-item [ngStyle]="{'padding-right':activeQuestion === question ? '200px' : null }"> -->
+        <ion-item>
+          <ion-input type="text"
+                     placeholder="Question {{question.type}}"></ion-input>
+        </ion-item>
+        <!-- <div *ngIf="activeQuestion !== question"> -->
+        <div>
+          <!--preview mode-->
+          <!-- <ion-item>
+            <ion-icon name="trash"></ion-icon>
+            <ion-label>Preview</ion-label>
+          </ion-item> -->
+
+          <ion-item *ngIf="question.type==='text'">
+            <ion-input disabled
+                       type="text"
+                       placeholder="Short answer text"></ion-input>
+          </ion-item>
+          <div *ngIf="question.type==='radio'">
+            <ion-item *ngFor="let choice of question.choices">
+              <ion-icon name="radio-button-off"></ion-icon>
+              <ion-input type="text"
+                         value="{{choice}}"></ion-input>
+              <ion-button item-right
+                          fill="clear"
+                          *ngIf="question.choices.length!==1"
+                          (click)="removeOption(choice, question.choices)">
+                <ion-icon name="close"
+                          slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="radio-button-off"></ion-icon>
+              <ion-input type="text"
+                         readonly
+                         role="button"
+                         (click)="addOption(question.choices)"
+                         placeholder="Add option"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+
+      </ion-card>
+      <!-- <ion-list>
+          <ion-radio-group>
+            <ion-list-header>
+              Auto Manufacturers
+            </ion-list-header>
+        
+            <ion-item>
+                  <ion-input type="text"
+                             value="cord"></ion-input>
+              <ion-radio slot="start" value="cord"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+                <ion-input type="text"
+                value="cord"></ion-input>
+              <ion-radio slot="start" value="duesenberg"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+                <ion-input type="text"
+                value="cord"></ion-input>
+              <ion-radio slot="start" value="hudson"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+                <ion-input type="text"
+                value="cord"></ion-input>
+              <ion-radio slot="start" value="packard"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+                <ion-input type="text"
+                value="cord"></ion-input>
+              <ion-radio slot="start" value="studebaker"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list> -->
+    </div>
+  </div>
 </ion-content>
