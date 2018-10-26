@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" title="Add question">
       <ion-fab-button mini
                       (click)="addQuestion()">
         <ion-icon name="add"></ion-icon>
@@ -42,7 +42,7 @@
           </ion-item>
         <!-- </div> -->
         <!-- <ion-item [ngStyle]="{'padding-right':activeQuestion === question ? '200px' : null }"> -->
-        <ion-item>
+        <ion-item style="padding-right: 200px">
           <ion-input type="text"
                      placeholder="Question {{question.type}}"></ion-input>
         </ion-item>
