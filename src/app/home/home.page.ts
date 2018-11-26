@@ -7,54 +7,62 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
   questionTypes = [{
-    code: 'text',
-    description: 'Short answer'
+    value: 'text',
+    text: 'Short answer',
+    family: 'input'
   }, {
-    code: 'textarea',
-    description: 'Paragraph'
+    value: 'textarea',
+    text: 'Paragraph',
+    family: 'input'
   }, {
-    code: 'radio',
-    description: 'Multiple choice'
+    value: 'radio',
+    text: 'Multiple choice',
+    family: 'options'
   }, {
-    code: 'checkbox',
-    description: 'Checkboxes'
+    value: 'checkbox',
+    text: 'Checkboxes',
+    family: 'options'
   }, {
-    code: 'select',
-    description: 'Drop-down'
+    value: 'dropdown',
+    text: 'Drop-down',
+    family: 'options'
   }, {
-    code: 'scale',
-    description: 'Linear scale'
+    value: 'scale',
+    text: 'Linear scale'
   }, {
-    code: 'rating',
-    description: 'Rating'
+    value: 'rating',
+    text: 'Rating'
   }];
 
   form = {
     id: 0,
-    title:null,
-    description:null
+    title: null,
+    description: null
   }
   questions = [];
   //mode: config, preview, response, readonly
-  addQuestion(){
+  addQuestion() {
     var question = {
       type: 'radio',
-      choices:['Option 1']
-      
+      choices: ['Option 1']
+
     }
     this.questions.push(question)
   }
 
-  addOption(choices){
+  addOption(choices) {
     // debugger;
     choices.push('Option ' + (choices.length + 1));
   }
-  removeOption(choice, choices){
+  removeOption(choice, choices) {
     var index = choices.indexOf(choice);
     choices.splice(index, 1);
   }
-  changeQuestionType(question, questionType){
-    
-    this.questions.push(question)
+  changeQuestionType(question, $event) {
+    var questionTypeObj = $event.detail.value;
+    var type1 = questionTypeObj
+    //are two types compatible
+    if (questionTypeObj.family)
+      console.log($event)
   }
 }

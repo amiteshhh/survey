@@ -33,11 +33,10 @@
           <!-- <ion-item *ngIf="activeQuestion === question" style="position: absolute;width:200px;right:0"> -->
           <ion-item style="position: absolute;width:200px;right:0">
             <ion-select interface="popover" style="max-width:100%;width:100%"
-                        placeholder="Question Type">
+                        placeholder="Question Type" (ionChange)="changeQuestionType(question, $event)">
               <ion-select-option *ngFor="let choice of questionTypes"
-                                 value="{{choice.code}}">
-                <ion-icon name="add"></ion-icon>{{choice.description}}
-              </ion-select-option>
+                                 [value]="choice">
+                <ion-icon name="add"></ion-icon>{{choice.text}}</ion-select-option>
             </ion-select>
           </ion-item>
         <!-- </div> -->
@@ -59,7 +58,7 @@
                        type="text"
                        placeholder="Short answer text"></ion-input>
           </ion-item>
-          <div *ngIf="question.type==='radio'">
+          <div *ngIf="question.type==='radio' || question.type==='checkbox' || question.type==='dropdown'">
             <ion-item *ngFor="let choice of question.choices">
               <ion-icon name="radio-button-off"></ion-icon>
               <ion-input type="text"
