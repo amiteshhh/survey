@@ -4,4 +4,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+<ion-button color="primary" (click)="addItem()">Add Item</ion-button>
+<ion-button color="primary" (click)="viewItems()">View Items</ion-button>
+<ion-button color="primary" (click)="viewItems()">Clear Items</ion-button>
+
+<ion-list>
+		<ion-item class="text" *ngFor="let item of items | async">
+			{{item | json}}
+		</ion-item>
+	</ion-list>
+</ion-content>

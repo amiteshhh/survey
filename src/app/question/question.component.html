@@ -1,0 +1,19 @@
+<!-- <ion-item style="position: absolute;width:200px;right:0">
+  <ion-select interface="popover"
+              style="max-width:100%;width:100%"
+              placeholder="Question Type"
+              (ionChange)="changeQuestionType(question, $event)">
+    <ion-select-option *ngFor="let choice of questionTypes"
+                       [value]="choice">
+      <ion-icon name="add"></ion-icon>{{choice.text}}
+    </ion-select-option>
+  </ion-select>
+</ion-item> -->
+<ion-item style="padding-right: 200px">
+  <ion-input type="text"
+             placeholder="Question text - {{question.type}}"></ion-input>
+</ion-item>
+<div *ngIf="question" [ngSwitch]="question.type">
+  <app-question-text *ngSwitchCase="'text'"></app-question-text>
+  <app-question-radio *ngSwitchCase="'radio'"></app-question-radio>
+</div>
