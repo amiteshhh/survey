@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injector, Inject } from '@angular/core';
 // import { Input } from '@ionic/angular';
+
+import {NavParams} from '@ionic/angular'
 
 @Component({
   selector: 'app-question',
@@ -36,9 +38,14 @@ export class QuestionComponent implements OnInit {
     value: 'rating',
     text: 'Rating'
   }];
-  constructor() { }
+  constructor(injector: Injector) { 
+    var navParams = injector.get(NavParams, 'notFound')
+    console.log(navParams)
+  }
 
   ngOnInit() {
+    this.question = this.question || {type:'radio'}
+    console.log(this.question)
   }
 
  

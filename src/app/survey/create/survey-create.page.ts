@@ -1,4 +1,7 @@
+import { ConfigureQuestionPage } from './../../question/configure/configure-question.page';
+
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-survey-create',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyCreatePage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -19,13 +22,22 @@ export class SurveyCreatePage implements OnInit {
   }
   questions = [];
   //mode: config, preview, response, readonly
-  addQuestion() {
+  // addQuestion() {
+    configureQuestion1() {
     var question = {
       type: 'radio',
       choices: ['Option 1']
 
     }
     this.questions.push(question)
+  }
+
+  async configureQuestion(question){
+    const modal = await this.modalController.create({
+      component: ConfigureQuestionPage,
+      componentProps: { question: question }
+    });
+    return await modal.present();
   }
   // question = {//save as master question
   //   title: 'string',
