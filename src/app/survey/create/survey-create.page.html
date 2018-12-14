@@ -2,14 +2,14 @@
   <ion-toolbar>
     <ion-title>Create Survey</ion-title>
     <ion-buttons slot="primary">
-      <ion-button color="primary"  (click)="presentPopover(1)">
-        <ion-icon slot="icon-only" name="more"></ion-icon>
+      <ion-button color="primary"  (click)="save()">
+        Save
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <!-- <ion-fab vertical="bottom"
            horizontal="end"
            slot="fixed"
@@ -41,26 +41,26 @@
     </ion-fab-list>
   </ion-fab>
   <div>
-    <div>
+    <ion-list>
       <ion-item>
         <ion-input required
                    type="text"
-                   placeholder="Form title"></ion-input>
+                   placeholder="Survey title"></ion-input>
       </ion-item>
       <ion-item>
         <ion-input type="text"
-                   placeholder="Form description"></ion-input>
+                   placeholder="Survey description"></ion-input>
       </ion-item>
-    </div>
+    </ion-list>
     <div>
 
       
       <ion-list>
-        <div *ngFor="let question of questions"
+        <ion-item *ngFor="let question of questions"
              (click)="activeQuestion=question">
           <ion-item-divider></ion-item-divider>
           <app-question [question]="question"></app-question>
-        </div>
+      </ion-item>
       </ion-list>
     </div>
   </div>

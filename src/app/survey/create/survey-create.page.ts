@@ -74,6 +74,10 @@ export class SurveyCreatePage implements OnInit {
     return await modal.present();
   }
 
+  save(){
+    console.log('Saving...')
+  }
+
   // question = {//save as master question
   //   title: 'string',
   //   type: 'text',
