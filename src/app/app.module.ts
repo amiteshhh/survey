@@ -12,11 +12,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SurveyComponent } from './survey/survey.component';
+
+// import { SurveyComponent } from './survey/survey.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), 
     AngularFireModule.initializeApp(environment.firebaseConfig),

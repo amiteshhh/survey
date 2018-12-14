@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SurveyCreatePage } from './survey-create.page';
+import { SurveyCreatePage, SelectQuestionTypeComponent } from './survey-create.page';
 import { QuestionModule } from './../../question/question.module';
 
 const routes: Routes = [
@@ -23,6 +23,7 @@ const routes: Routes = [
     QuestionModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SurveyCreatePage]
+  entryComponents:[SelectQuestionTypeComponent],
+  declarations: [SurveyCreatePage, SelectQuestionTypeComponent]
 })
 export class SurveyCreatePageModule {}

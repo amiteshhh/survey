@@ -1,7 +1,13 @@
-import { ConfigureQuestionPage } from './../../question/configure/configure-question.page';
-
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+
+import { ConfigureQuestionComponent } from './../../question/configure/configure-question.component';
+
+@Component({
+  templateUrl: './select-question-type.html'
+})
+export class SelectQuestionTypeComponent {
+}
 
 @Component({
   selector: 'app-survey-create',
@@ -14,6 +20,33 @@ export class SurveyCreatePage implements OnInit {
 
   ngOnInit() {
   }
+  questionTypes = [{
+    value: 'text',
+    text: 'Short answer',
+    family: 'input'
+  }, {
+    value: 'textarea',
+    text: 'Paragraph',
+    family: 'input'
+  }, {
+    value: 'radio',
+    text: 'Multiple choice',
+    family: 'options'
+  }, {
+    value: 'checkbox',
+    text: 'Checkboxes',
+    family: 'options'
+  }, {
+    value: 'dropdown',
+    text: 'Drop-down',
+    family: 'options'
+  }, {
+    value: 'scale',
+    text: 'Linear scale'
+  }, {
+    value: 'rating',
+    text: 'Rating'
+  }];
 
   form = {
     id: 0,
@@ -23,22 +56,24 @@ export class SurveyCreatePage implements OnInit {
   questions = [];
   //mode: config, preview, response, readonly
   // addQuestion() {
-    configureQuestion1() {
+  configureQuestion(questionType) {
+    //create empty question here
     var question = {
       type: 'radio',
       choices: ['Option 1']
-
     }
-    this.questions.push(question)
+    // this.questions.push(question)
+    this.showConfigureQuestion(question)
   }
 
-  async configureQuestion(question){
+  async showConfigureQuestion(question) {
     const modal = await this.modalController.create({
-      component: ConfigureQuestionPage,
-      componentProps: { question: question }
+      component: ConfigureQuestionComponent,
+      componentProps: { question: null }
     });
     return await modal.present();
   }
+
   // question = {//save as master question
   //   title: 'string',
   //   type: 'text',

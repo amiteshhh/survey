@@ -14,6 +14,6 @@
              placeholder="Question text - {{question.type}}"></ion-input>
 </ion-item>
 <div *ngIf="question" [ngSwitch]="question.type">
-  <app-question-text *ngSwitchCase="'text'"></app-question-text>
-  <app-question-radio *ngSwitchCase="'radio'"></app-question-radio>
+  <app-text-question *ngSwitchCase="'text'"></app-text-question>
+  <app-radio-question *ngSwitchCase="'radio'"></app-radio-question>
 </div>

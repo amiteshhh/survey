@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
 
-import { ConfigureQuestionPageModule } from './configure/configure-question.module';
+import { SharedModule } from './../core/shared.module';
+
 import { QuestionComponent } from './question.component';
-import { QuestionTextComponent } from './text/question-text.component';
-import { QuestionRadioComponent } from './radio/question-radio.component';
+import { ConfigureQuestionComponent } from './configure/configure-question.component';
+import { RadioQuestionComponent } from './radio/radio-question.component';
+import { TextQuestionComponent } from './text/text-question.component';
 
-var components = [QuestionComponent, QuestionRadioComponent, QuestionTextComponent];
+// var components = [QuestionComponent, , , ConfigureQuestionComponent];
 @NgModule({
-    imports: [IonicModule,
-        CommonModule,
-        ConfigureQuestionPageModule
-    ],
-    entryComponents: [QuestionComponent],
-    declarations: components,
-    exports: components
+    imports: [SharedModule],
+    entryComponents: [ConfigureQuestionComponent],
+    declarations: [QuestionComponent, ConfigureQuestionComponent, RadioQuestionComponent, TextQuestionComponent],
+    exports: [QuestionComponent]
 })
 export class QuestionModule { }

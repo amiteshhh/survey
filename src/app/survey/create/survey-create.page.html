@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Create Survey</ion-title>
     <ion-buttons slot="primary">
-      <ion-button color="primary">
+      <ion-button color="primary"  (click)="presentPopover(1)">
         <ion-icon slot="icon-only" name="more"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,14 +10,35 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-fab vertical="bottom"
+  <!-- <ion-fab vertical="bottom"
            horizontal="end"
            slot="fixed"
-           title="Add question">
-    <ion-fab-button mini
-                    (click)="configureQuestion()">
+           title="Add question" 
+           (click)="presentPopover($event)">
+    <ion-fab-button mini>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+  </ion-fab> -->
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button mini>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top" style="    width: 100%;
+    right: 15px;">
+        <!-- <ion-item *ngFor="item of [1,2,3]"> -->
+            <!-- <div style="width:100%;"> -->
+          <ion-list>
+          <ion-item *ngFor="let questionType of questionTypes" (click)="configureQuestion(questionType)">
+              <ion-icon slot="start" size="small" name="sunny"></ion-icon>
+              <ion-button>{{questionType.text}}</ion-button>
+          </ion-item>
+        </ion-list>
+      <!-- </div> -->
+      <!-- <div style="width:100%;">
+        <div (click)="configureQuestion(1)">Text</div>
+        <div (click)="configureQuestion(2)">Radio</div>
+    </div> -->
+    </ion-fab-list>
   </ion-fab>
   <div>
     <div>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <!-- <ion-back-button></ion-back-button> -->
+      <ion-button color="primary" appModalClose>
+        <ion-icon name="close"></ion-icon>
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Configure</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="save()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="question" [ngSwitch]="question.type">
+        <app-text-question *ngSwitchCase="'text'"></app-text-question>
+        <app-radio-question *ngSwitchCase="'radio'"></app-radio-question>
+      </div>
+</ion-content>
